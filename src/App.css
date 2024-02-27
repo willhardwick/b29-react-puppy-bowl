@@ -2,3 +2,22 @@
   margin: 0;
   font-size: 10px;
 }
+
+ul {
+  display: grid;
+  list-style: none;
+}
+
+li {
+  display: grid;
+}
+
+li img {
+  height: 100px;
+  margin: 1em;
+}
+
+.navbar {
+  display: flex;
+  border: black 3px solid;
+}
