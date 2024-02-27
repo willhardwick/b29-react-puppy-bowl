@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import fetchAllPlayers from '../API/index';
 
 const AllPlayers = () => {
+    const navigate = useNavigate()
     const [players, setPlayers] = useState([]) // if you do null, you can add a loading screen
     console.log(players)
     
@@ -31,11 +32,10 @@ const AllPlayers = () => {
         <ul>
             {players.map(player =>  (
                 <li key={player.id}>
-                    <img src={player.imageUrl}/>
+                    <img onClick={() => navigate(`/players/${player.id}`)} src={player.imageUrl}/>
                     <h2>Name: {player.name}</h2>
                     <p>Breed: {player.breed}</p>
                     <p>Status: {player.status}</p>
-                    <button>See details</button>
                 </li>
             ))}
         </ul>
