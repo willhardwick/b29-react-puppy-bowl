@@ -1,12 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import fetchAllPlayers from '../API/index';
+import { fetchAllPlayers } from '../API/index';
 
 const AllPlayers = () => {
     const navigate = useNavigate()
-    const [players, setPlayers] = useState([]) // if you do null, you can add a loading screen
-    console.log(players)
+    const [players, setPlayers] = useState([])
     
     // Fetch all players
     useEffect(() => {
@@ -16,7 +15,7 @@ const AllPlayers = () => {
                 console.log('players', players)
                 setPlayers(players);
             } catch (err) {
-                console.error('Error fetching players', error)
+                console.error('Error fetching players', err)
             }
         }
 
@@ -24,23 +23,18 @@ const AllPlayers = () => {
     },[])
 
 
-    
-    return (
-    <div>
-        <h1>All players</h1>
-        {/* Render all players */}
-        <ul>
-            {players.map(player =>  (
-                <li key={player.id}>
-                    <img onClick={() => navigate(`/players/${player.id}`)} src={player.imageUrl}/>
-                    <h2>Name: {player.name}</h2>
-                    <p>Breed: {player.breed}</p>
-                    <p>Status: {player.status}</p>
-                </li>
-            ))}
-        </ul>
-    </div>
-    )
+    // Render all players
+    return <main> {
+        players.map((player) =>  {
+        return <article key={player.id}>
+            <img onClick={() => navigate(`/players/${player.id}`)} 
+            src={player.imageUrl}/>
+            <h2>Name: {player.name}</h2>
+            <p>Breed: {player.breed}</p>
+            <p>Status: {player.status}</p>
+        </article>
+      }) 
+    }    </main>
 }
 
 export default AllPlayers
