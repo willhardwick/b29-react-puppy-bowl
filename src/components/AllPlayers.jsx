@@ -38,7 +38,8 @@ const AllPlayers = () => {
 
 
     // Render all players
-    return <main> 
+    return <main>
+        <label>Search for a player</label>
         <input name='search' value ={search} onChange={searchHandler} />
         {
         players.map((player) =>  {

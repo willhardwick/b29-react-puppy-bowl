@@ -26,7 +26,7 @@ const NewPlayerForm = () => {
     
     return <form onSubmit={handleSubmit}>
             <div>
-                <h1>Add Player</h1>
+                <h1>Add player</h1>
             </div>
             <div>
                 <label>Name</label>
