@@ -16,3 +16,7 @@ export const getSinglePlayer = async (playerId) => {
 export const addPlayer = async (player) => {
     await axios.post(BASE_URL, player)
 }
+
+export const deletePlayer = async (playerId) => {
+    await axios.delete(BASE_URL + '/' + playerId)
+}

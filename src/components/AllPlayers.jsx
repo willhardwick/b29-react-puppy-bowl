@@ -6,6 +6,7 @@ import { fetchAllPlayers } from '../API/index';
 const AllPlayers = () => {
     const navigate = useNavigate()
     const [players, setPlayers] = useState([])
+    const [search, setSearch] = useState('')
     
     // Fetch all players
     useEffect(() => {
@@ -22,9 +23,24 @@ const AllPlayers = () => {
         updatePlayers();
     },[])
 
+    function searchHandler(evt) {
+        setSearch(evt.target.value)
+    }
+
+    let filteredPlayers = players
+    if (search !== '') {
+        filteredPlayers = players.filter((player) => {
+            const lowerCasePlayerName = player.name.toLowerCase()
+            const lowerCaseSearch = search.toLowerCase()
+            return lowerCasePlayerName.includes(lowerCaseSearch)
+        })
+    }
+
 
     // Render all players
-    return <main> {
+    return <main> 
+        <input name='search' value ={search} onChange={searchHandler} />
+        {
         players.map((player) =>  {
         return <article key={player.id}>
             <img onClick={() => navigate(`/players/${player.id}`)} 

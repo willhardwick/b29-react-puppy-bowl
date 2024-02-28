@@ -6,9 +6,6 @@ const NavBar = () => {
         <nav>
         <Link id='home-click' to='/'>Home</Link>
         <Link to="/players/add">Add player</Link>
-        <label for="search" id="search-label ">Search</label>
-        <input type="text" name="name" id="search-input"></input>
-        <button type='submit' id='search-button'>Find player</button>
         </nav>
     )
 }
