@@ -26,13 +26,10 @@ const SinglePlayer = () => {
         await deletePlayer(playerId);
         navigate('/')
     }
-
-
-
     
     if (!player) {
         return <div>Loading player {id} . . .</div>
-    }
+    } 
 
     return (<article key={player.id}>
             <img onClick={() => navigate(`/players/${player.id}`)} 
